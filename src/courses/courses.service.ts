@@ -12,6 +12,7 @@ export class CoursesService {
     private CoursesModel: Model<CoursesDocument>,
   ) {}
   create(createCourse: CreateCourseDto) {
+    console.log('🚀 ~ CoursesService ~ create ~ createCourse:', createCourse);
     return this.CoursesModel.create(createCourse);
   }
 

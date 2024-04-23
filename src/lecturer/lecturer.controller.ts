@@ -1,21 +1,12 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
-import { LecturerService } from './lecturer.service';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CreateLecturerDto } from './dto/create-lecturer.dto';
-import { UpdateLecturerDto } from './dto/update-lecturer.dto';
+import { LecturerService } from './lecturer.service';
 
 @Controller('lecturer')
 export class LecturerController {
   constructor(private readonly lecturerService: LecturerService) {}
 
-  @Post('/create')
+  @Post()
   create(@Body() createLecturerDto: CreateLecturerDto) {
     return this.lecturerService.create(createLecturerDto);
   }
@@ -30,13 +21,10 @@ export class LecturerController {
     return this.lecturerService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateLecturerDto: UpdateLecturerDto,
-  ) {
-    return this.lecturerService.update(+id, updateLecturerDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateLecturerDto: UpdateLecturerDto) {
+  //   return this.lecturerService.update(+id, updateLecturerDto);
+  // }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
