@@ -20,7 +20,7 @@ export class LecturerService {
   }
 
   findAll() {
-    return this.LecturerModel.find({});
+    return this.LecturerModel.find({}).sort({ createdAt: -1 });
   }
 
   findOne(id: number) {

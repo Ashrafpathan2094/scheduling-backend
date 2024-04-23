@@ -17,7 +17,7 @@ export class CoursesService {
   }
 
   findAll() {
-    return this.CoursesModel.find({});
+    return this.CoursesModel.find({}).sort({ createdAt: -1 });
   }
 
   findOne(id: number) {
