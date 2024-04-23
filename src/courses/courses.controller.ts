@@ -9,12 +9,22 @@ export class CoursesController {
 
   @Post()
   create(@Body() createCourseDto: CreateCourseDto) {
-    return this.coursesService.create(createCourseDto);
+    try {
+      return this.coursesService.create(createCourseDto);
+    } catch (error) {
+      console.log('error', error);
+      throw new Error(error.message);
+    }
   }
 
   @Get()
   findAll() {
-    return this.coursesService.findAll();
+    try {
+      return this.coursesService.findAll();
+    } catch (error) {
+      console.log('error', error.message);
+      throw new Error(error.message);
+    }
   }
 
   @Get(':id')
