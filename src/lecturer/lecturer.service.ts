@@ -12,10 +12,6 @@ export class LecturerService {
     private LecturerModel: Model<LecturerDocument>,
   ) {}
   create(createLecturerDto: CreateLecturerDto) {
-    console.log(
-      '🚀 ~ LecturerService ~ create ~ createLecturerDto:',
-      createLecturerDto,
-    );
     return this.LecturerModel.create(createLecturerDto);
   }
 
