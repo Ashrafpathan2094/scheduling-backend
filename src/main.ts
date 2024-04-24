@@ -4,14 +4,10 @@ import { json, urlencoded } from 'express';
 
 async function bootstrap() {
   // const app = await NestFactory.create(AppModule, { cors: true });
-  const app = await NestFactory.create(AppModule, {
-    bodyParser: true,
-  });
+  const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: '*',
+    origin: ['https://scheduling-frontend-2094ashraf.vercel.app'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
   });
 
   app.use(json({ limit: '50mb' }));
