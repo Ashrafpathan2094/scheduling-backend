@@ -5,7 +5,11 @@ import { json, urlencoded } from 'express';
 async function bootstrap() {
   // const app = await NestFactory.create(AppModule, { cors: true });
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  app.enableCors({
+    allowedHeaders: ['content-type'],
+    origin: 'https://scheduling-frontend-2094ashraf.vercel.app',
+    credentials: true,
+  });
 
   app.use(json({ limit: '50mb' }));
   app.use(urlencoded({ extended: true, limit: '50mb' }));
