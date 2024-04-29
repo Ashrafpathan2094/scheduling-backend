@@ -1,7 +1,7 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { Types } from 'mongoose';
 import { BatchesService } from './batches.service';
 import { CreateBatchDto, courseIdWhileFindAll } from './dto/create-batch.dto';
-import { ObjectId, Types } from 'mongoose';
 
 @Controller('batches')
 export class BatchesController {
@@ -10,9 +10,7 @@ export class BatchesController {
   @Post()
   create(@Body() createBatchDto: CreateBatchDto) {
     try {
-      const courseID = new Types.ObjectId(createBatchDto.courseId);
-      const body = { ...createBatchDto, courseId: courseID };
-      return this.batchesService.create(body);
+      return this.batchesService.create(createBatchDto);
     } catch (error) {
       console.log('error', error.message);
       throw new Error(error.message);
