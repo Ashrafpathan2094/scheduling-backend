@@ -11,9 +11,9 @@ export class CoursesService {
     @InjectModel('Courses')
     private CoursesModel: Model<CoursesDocument>,
   ) {}
-  create(createCourse: CreateCourseDto) {
-    console.log('🚀 ~ CoursesService ~ create ~ createCourse:', createCourse);
-    return this.CoursesModel.create(createCourse);
+  async create(createCourseDto: CreateCourseDto): Promise<CoursesDocument> {
+    const createdCourse = new this.CoursesModel(createCourseDto);
+    return createdCourse.save();
   }
 
   findAll() {
